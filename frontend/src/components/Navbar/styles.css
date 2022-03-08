@@ -1,0 +1,33 @@
+/*Aqui que irei colocar os estilos do css*/
+
+header {
+    /*Irá colocar o azul em todo elemento header*/
+    background-color: var(--color-primary);
+    height: 60px /*altura da parte azul*/;
+    display: flex;
+    align-items: center; /*Para alinhar os itens ao centro*/
+}
+
+.dsmovie-nav-content {
+    display: flex; /*com display flex não fica um em baixo do outro, mas sim um ao lado do outro*/
+    justify-content: space-between; /*para ficar cada elementro em uma ponta*/
+    align-items: center; /*Para alinhar os itens ao centro, mas vem um pouco pra baixo, mas não muito, pois tem uma margem em baixo*/
+    color: #ffff; /*Cor da letra*/
+}
+
+.dsmovie-nav-content h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.dsmovie-contact-container {
+    display: flex; /*Serve para colocar a logo e o github um do lado do outro*/
+    align-items: center; /*para alinhar os itens dela ao centro, no caso o /rodrigues-leo97*/
+}
+
+.dsmovie-contact-link {
+    margin: 0 0 0 10px; /*Para retirar a margem que fica abaixo que vem por padrão, e sempre começa de cima pelo sentido horário*/
+    font-size: 12px;
+    color: #fff;
+}

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src", //variavel global
     "target": "es5",
     "lib": [
       "dom",
