@@ -60,3 +60,15 @@ export default App;
 
 ```
 
+- Após isso, ou antes, criar pelo menos as pastas para os arquivos no trecho de código acima das rotas
+- src/pages/Listing/index.tsx   (Componentes de página em outra pasta, para diferenciar rotas de componentes de telas)
+- src/pages/Form/index.tsx
+
+## Entendendo como funcionam as rotas
+- Foi importado três componentes do ReactRouter pra criar as rotas (BrowserRouter, Routes, Route)
+- Também terei que importar os componentes do React (Listing, Form, NavBar) para ativar o componente em cada rota
+  
+  Começa pela tag do <BrowserRouter> e após ele coloca a tag do <NavBar> pq todas as páginas terão a barra azul no header da page
+  Após isso vem o componente <Route> é ele que configura todas as rotas
+  OBS: Tem uma subrota que está passando o id do filme <Route path=":movieId" element={<Form />} /> ex - localhosto:3000/form/2
+
