@@ -31,3 +31,7 @@ header {
     font-size: 12px;
     color: #fff;
 }
+
+.github-name {
+    text-decoration: none;
+}
