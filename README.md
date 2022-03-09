@@ -70,5 +70,26 @@ export default App;
   
   Começa pela tag do <BrowserRouter> e após ele coloca a tag do <NavBar> pq todas as páginas terão a barra azul no header da page
   Após isso vem o componente <Route> é ele que configura todas as rotas
-  OBS: Tem uma subrota que está passando o id do filme <Route path=":movieId" element={<Form />} /> ex - localhosto:3000/form/2
+  OBS: Tem uma subrota que está passando o id do filme <Route path=":movieId" element={< Form /> } /> ex - localhost:3000/form/2
 
+ Importar a seta para troca de página no figma do Nélio
+ 
+ # Criando componente pagination
+ 
+ - src/components/Pagination
+ - Importa a imagem usando o import { ReactComponent as apelidoDaImagem } from 'assets/img/arrow.svg'
+ 
+ OBS: para importar imagens tem que usar o ReactComponent
+ 
+ # Criar o component MOVIESTAR
+ 
+ src/components/MovieStars/index.tsx
+ 
+  # Criar o component MOVIESCORE
+ 
+ src/components/MovieScore/index.tsx
+ 
+  # Criar o component MOVIECARD
+ 
+ src/components/MovieCard/index.tsx
+ 
