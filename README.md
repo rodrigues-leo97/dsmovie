@@ -1,4 +1,4 @@
-# Lista
+# Lista FRONTEND
 
 - [x] Criar projeto
 - [x] Instalar Bootstrap
@@ -132,3 +132,67 @@ function MovieCard() {
 export default MovieCard;
   
   ```
+  
+  
+# LISTA BACKEND
+
+ - frontend (netlify) e backend(heroku)
+ - Estão hospedados em lugares diferentes e por padrão no navegador um sistema que está em um lugar ele não pode acessar uma API que está em outro lugar
+  
+ - Tem que liberar isso no projeto do backend e para isso segue os passos abaixo:
+ 
+  CRIAR um PACOTE seguido de um ARQUIVO
+  - src/main/java/com.devsuperior.dsmovie/.config/SecurityConfig
+  - subpacote de configuração com o arquivo SecurityConfig
+  
+  DEIXAR A CLASSE COM AS SEGUINTES CONFIG:
+  
+  ```
+  
+  package com.devsuperior.dsmovie.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private Environment env;
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
+            http.headers().frameOptions().disable();
+        }
+
+        http.cors().and().csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests().anyRequest().permitAll();
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
+        configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+}
+
+  
+  ```
+  
