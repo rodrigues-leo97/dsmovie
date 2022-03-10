@@ -25,6 +25,15 @@ function Listing() {
                     <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
                         <MovieCard />
                     </div>
+                    <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
+                        <MovieCard />
+                    </div>
+                    <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
+                        <MovieCard />
+                    </div>
+                    <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
+                        <MovieCard />
+                    </div>
                 </div> {/* row = classe bootstrap*/}
             </div>
         </> //nome é fragment, não muda nada na prática
