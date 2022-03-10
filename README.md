@@ -137,15 +137,15 @@ export default MovieCard;
 # LISTA BACKEND
 
  - frontend (netlify) e backend(heroku)
- - Estão hospedados em lugares diferentes e por padrão no navegador um sistema que está em um lugar ele não pode acessar uma API que está em outro lugar
+ - **Estão hospedados em lugares diferentes e por padrão no navegador um sistema que está em um lugar ele não pode acessar uma API que está em outro lugar**
   
- - Tem que liberar isso no projeto do backend e para isso segue os passos abaixo:
+ > Tem que liberar isso no projeto do backend e para isso segue os passos abaixo:
  
   CRIAR um PACOTE seguido de um ARQUIVO
   - src/main/java/com.devsuperior.dsmovie/.config/SecurityConfig
   - subpacote de configuração com o arquivo SecurityConfig
   
-  DEIXAR A CLASSE COM AS SEGUINTES CONFIG:
+  ## **DEIXAR A CLASSE COM AS SEGUINTES CONFIG PARA LIBERAR ACESSO A HOSTS DIFERENTES (NETLIFY E HEROKU SE COMUNICAREM):** ##
   
   ```
   
@@ -214,6 +214,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    * Essas duas chaves estrangeiras que seriam a chave primária, ou seja, uma chave primária composta
    * Necessário criar uma outra tabela auxiliar para conter essas chaves compostas, por conta do JPA (Com construtor, getters e setters)
    * Após isso instanciar a classe ScorePK dentro da classe SCORE
+  
+  ![image](https://user-images.githubusercontent.com/71105466/157581916-ac16e6b9-4c55-45ac-b487-fc84b39abaa1.png)
+
   
   ```
   public class Score {
