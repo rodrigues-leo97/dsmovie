@@ -343,7 +343,8 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
   ```
 
 
-
+- Acrescentar esse script criando um novo arquivo
+  * src/resources/import.sql
 
   
   
