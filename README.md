@@ -234,9 +234,115 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   - Passo um MOVIE no parametro, e associar ele a meu score:
     * id.setMovie(movie)
     * id é do tipo ScorePK, e ele tem a referencia do MOVIE, e recebeu como param o MOVIE da função SET
+  
   - Esse padrão vai seguir também para linkar um USER ao SCORE, ex: 
   
-  ![image](https://user-images.githubusercontent.com/71105466/157569854-40d36d5f-5d51-4188-ab02-bd9bb03fdd29.png)
+    ![image](https://user-images.githubusercontent.com/71105466/157569854-40d36d5f-5d51-4188-ab02-bd9bb03fdd29.png)
+  
+  
+  # Configurando o BANCO DE DADOS H2
+  - Ir no application.properties e colar as duas linhas a seguir de confi
+  
+  ```
+   spring.profiles.active=test
+
+   spring.jpa.open-in-view=false
+  
+  ```
+  
+  - Após isso criar o arquivo em src/main/resources/application-test.properties, com as seguintes config: 
+  
+  ```
+   # Dados de conexão com o banco H2
+     spring.datasource.url=jdbc:h2:mem:testdb
+     spring.datasource.username=sa
+     spring.datasource.password=
+
+     # Configuração do cliente web do banco H2
+     spring.h2.console.enabled=true
+     spring.h2.console.path=/h2-console
+
+     # Configuração para mostrar o SQL no console
+     spring.jpa.show-sql=true
+     spring.jpa.properties.hibernate.format_sql=true
+  
+  ```
+  
+  - é a configuração do H2 e permitindo também que o manipule na web
+  - após isso próxima etapa
+  
+  
+  # MAPEAMENTO OBJETO RELACIONAL
+  - Colocar as annotation (ex: @Entity)
+  
+     ![image](https://user-images.githubusercontent.com/71105466/157572599-685fdb1c-c4e6-4fe4-bd69-814bf38a20bc.png)
+  
+  
+- Na classe Score usamos outra anotação, o @ EmbeddedId (para informar ser uma chave COMPOSTA)
+    * ![image](https://user-images.githubusercontent.com/71105466/157573288-e52d4c2f-3f6e-4244-9ca7-753ba59cfaca.png)
+  
+- Na classe ScorePK, usamos a anotação @Embeddable e não a @Id, por se tratar de uma tabela de associação
+- Usamos a annotation ManyToOne e JoinColumn(referenciando o nome da chave estrangeira dela)
+  
+    * ![image](https://user-images.githubusercontent.com/71105466/157573474-69fe3c86-41bc-4c1e-ba22-69e5ea889ef3.png)
+  
+  OBS: implementar em ScorePK o Serializable (interface para que esse obj possa ser convertido para bites, para que possa trafegar na redes, convertido em arquivos e etc...)
+  
+     * ![image](https://user-images.githubusercontent.com/71105466/157573977-b9a6e68b-253b-4c28-8466-19a76dd237ab.png)
+
+  
+ - ScorePK configurado para fazer referencia ao filme e ao usuário
+  
+  
+  # POPULANDO BANCO DE DADOS
+  
+  ```
+  INSERT INTO tb_user(email) VALUES ('maria@gmail.com');
+INSERT INTO tb_user(email) VALUES ('joao@gmail.com');
+INSERT INTO tb_user(email) VALUES ('ana@gmail.com');
+INSERT INTO tb_user(email) VALUES ('lucia@gmail.com');
+INSERT INTO tb_user(email) VALUES ('joaquim@gmail.com');
+
+INSERT INTO tb_movie(score, count, title, image) VALUES (4.5, 2, 'The Witcher', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (3.3, 3, 'Venom: Tempo de Carnificina', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/vIgyYkXkg6NC2whRbYjBD7eb3Er.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Shang-Chi e a Lenda dos Dez Anéis', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/cinER0ESG0eJ49kXlExM0MEWGxW.jpg');
+INSERT INTO tb_movie(score, count, title, image) VALUES (0, 0, 'Matrix Resurrections', 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hv7o3VgfsairBoQFAawgaQ4cR1m.jpg');
+
+INSERT INTO tb_score(movie_id, user_id, value) VALUES (1, 1, 5.0);
+INSERT INTO tb_score(movie_id, user_id, value) VALUES (1, 2, 4.0);
+INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 1, 3.0);
+INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 2, 3.0);
+INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
+  
+  ```
+
+
 
 
   
