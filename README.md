@@ -196,3 +196,48 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   
   ```
   
+ ![image](https://user-images.githubusercontent.com/71105466/157565973-4ea6b4a1-2fae-4b51-9873-fdcfe21290bb.png)
+  
+    - Segue o seguinte relacionamento, muitos para muitos
+    - Sempre quando tem relacionamento n, n é necessário criar uma tabela auxiliar entre ambos, no caso a tabela Score
+
+  
+ # Criando COMPONENTE
+ 
+  - src/main/java/com.devsuperior.dsmovie/entities/Movie (Criando a classe MOVIE)
+  - src/main/java/com.devsuperior.dsmovie/entities/User (Criando a classe USER)
+  
+  - CRIAR CLASSE DE ASSOCIAÇÃO (SCORE e ScorePK)
+  - src/main/java/com.devsuperior.dsmovie/entities/Score (Criando a classe Score)
+  - src/main/java/com.devsuperior.dsmovie/entities/ScorePK (Criando a classe ScorePK)
+   * Necessário criar uma outra tabela auxiliar pq temos oq chamamos de chave composta, que no caso são as duas chaves estrangeiras, o IdMovie e IdUser
+   * Essas duas chaves estrangeiras que seriam a chave primária, ou seja, uma chave primária composta
+   * Necessário criar uma outra tabela auxiliar para conter essas chaves compostas, por conta do JPA (Com construtor, getters e setters)
+   * Após isso instanciar a classe ScorePK dentro da classe SCORE
+  
+  ```
+  public class Score {
+
+    private ScorePK id = new ScorePK(); // chave composta, dar o new pra garantir que irá estar instanciada
+    private Double value;
+    
+}
+
+  ```
+  
+  - OBS: ao se fazer uma chave composta no Java, como no código acima é importante dar o NEW para garantir que ele esteja instanciado
+  
+  # Associando um filme ao Score
+  - Para isso na classe Score, fazer um método SET da classe Movie nela, ex:
+    ![image](https://user-images.githubusercontent.com/71105466/157569169-98890aec-899f-470f-a1ee-988265dfdedc.png)
+  
+  - Passo um MOVIE no parametro, e associar ele a meu score:
+    * id.setMovie(movie)
+    * id é do tipo ScorePK, e ele tem a referencia do MOVIE, e recebeu como param o MOVIE da função SET
+  - Esse padrão vai seguir também para linkar um USER ao SCORE, ex: 
+  
+  ![image](https://user-images.githubusercontent.com/71105466/157569854-40d36d5f-5d51-4188-ab02-bd9bb03fdd29.png)
+
+
+  
+  
