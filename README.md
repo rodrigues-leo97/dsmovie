@@ -348,6 +348,36 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
 
 - Acrescentar esse script criando um novo arquivo
   * src/resources/import.sql
+  
+  
+# Endereço do banco H2
+  - 
+  
+  
+# DIVISÃO DAS CAMADAS
+  
+## REPOSITORIES
+  com.devsuperior.dsmovie.repositories.MovieRepository
+  
+  ![image](https://user-images.githubusercontent.com/71105466/157791892-46ef8066-8191-4d52-8c52-beaddb78a1ef.png)
+
+  - é uma interface que herda a JpaRepository e dentro das < > vai o tipo da entidade e o tipo do id do movie que seria o long
+  
+## DTO 
+  
+  - No DTO ele é bem parecido com a classe referente a ele, por exemplo a Movie e a MovieDTO, a diferença é que a MovieDTO não terá o Jpa (@Entity e etc...)
+  - com.devsuperior.dsmovie.dto.MovieDTO
+  
+ ![image](https://user-images.githubusercontent.com/71105466/157792703-f01b5d15-bd2b-48cf-91a9-ae0d7da98a12.png)
+  
+  - Para facilitar a copia dos objetos da entidade para o Movie, criar um construtor que receba a entidade, que no caso irá receber no param o Movie movie
+  
+  ![image](https://user-images.githubusercontent.com/71105466/157793086-df336dfc-c9e8-45db-83b9-b35678c8d6ea.png)
+  
+  
+## SERVICES
+
+
 
   
   
