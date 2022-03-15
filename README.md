@@ -462,5 +462,93 @@ public class MovieService {
   
    ![image](https://user-images.githubusercontent.com/71105466/158294506-1bfceda3-c885-4426-b95d-003b458e8c01.png)
   
+  - Finaliza com anotação GetMapping para dizer que o método está respondendo ao Http GET
+  
+  ```
+  package com.devsuperior.dsmovie.movieController;
+
+import com.devsuperior.dsmovie.dto.MovieDTO;
+import com.devsuperior.dsmovie.services.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/movies") //rota que irá iniciar esse controlador
+public class MovieController {
+
+    @Autowired
+    private MovieService movieService;
+
+    @GetMapping //quando não tem a rota, ele responde pela raíz ou pelo indicado ao RequestMapping
+    public Page<MovieDTO> findAll(Pageable pageable) { //configurar de que seja uma resposta páginada
+        //no controlador se trabalha com DTO
+        //MovieController depende do MovieService
+
+        return movieService.findAll(pageable);
+
+    }
+
+}
+  
+  ```
+  
+  
+# URL NO POSTMAN
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158295707-a2c38771-0aaa-46d4-9182-12d2ceab9c04.png)
+  
+  - por padrão os itens que mostram por página são iguais a 20
+  - caso deseje mudar é só passar na url -> localhost:8080/movies?size=30
+  - para mudar a página -> localhost:8080/movies?size=12&page=2
+  
+  
+### buscando por um único ID
+  
+  ```
+   package com.devsuperior.dsmovie.movieController;
+
+import com.devsuperior.dsmovie.dto.MovieDTO;
+import com.devsuperior.dsmovie.services.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/movies") //rota que irá iniciar esse controlador
+public class MovieController {
+
+    @Autowired
+    private MovieService movieService;
+
+    @GetMapping //quando não tem a rota, ele responde pela raíz ou pelo indicado ao RequestMapping
+    public Page<MovieDTO> findAll(Pageable pageable) { //configurar de que seja uma resposta páginada
+        //no controlador se trabalha com DTO
+        //MovieController depende do MovieService
+
+        return movieService.findAll(pageable);
+    }
+
+    @GetMapping(value = "/{id}") //binding
+    public MovieDTO findById(@PathVariable Long id) { //para informar o binding que está ocorrendo ao parametro do Get
+        return movieService.findById(id);
+
+    }
+
+}
+
+  ```
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158297144-3bc16ac0-495c-4f0c-af6e-b69f48cd5902.png)
+
+
+  
   
 
