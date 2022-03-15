@@ -351,7 +351,9 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
   
   
 # Endereço do banco H2
-  - 
+  - localhost:8080/h2-console
+  - Colocar o mesmo endereço que está na configuração do arquivo -> application-teste.properties, na linha 2
+   ![image](https://user-images.githubusercontent.com/71105466/158291039-812d3243-04aa-4dd4-a1c8-29849c1dee30.png)
   
   
 # DIVISÃO DAS CAMADAS
@@ -376,8 +378,89 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
   
   
 ## SERVICES
-
-
+  
+  CAMINHO 
+  
+  - package com.devsuperior.dsmovie.services;
+  
+  - Após isso colocar uma annotation na classe para dizer que a mesma é um serviço
+  
+   ![image](https://user-images.githubusercontent.com/71105466/158291268-435622d3-a0c6-49e6-b2dc-455ff6c3a2c7.png)
 
   
+  ## PADRÃO DE CAMADAS
   
+  ![image](https://user-images.githubusercontent.com/71105466/158291405-51691b1c-57ec-4598-86bf-05011d526efb.png)
+  
+  - A comunicação de dados entre a SERVICE e a CONTROLLER é feita por DTO ex: <MovieDTO>
+  - Entre a SERVICE e a ENTITIE é pela classe normal ex: <Movie>
+  
+  - Ou seja, quando o serviço for devolver o retorno das entities para o controlador tem que ser em DTO
+  - Por isso nessa situação o retorno da lista de filmes é feito em <MovieDTO>
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158291714-2f895eb2-3e01-4940-8a9b-9c2204c2bc73.png)
+  
+  
+  ### PAGINAÇÃO
+  
+  - Pensando no frontend, teremos uma lista de filmes com paginação, por isso usamos um recurso no backend chamado Pageable, com isso fazendo com que nosso método não retorne mas uma List< >, mas sim uma Page < >, conforme imagem abaixo e seus imports;
+  
+   ![image](https://user-images.githubusercontent.com/71105466/158292872-e7fd4300-a083-4c27-b74f-aae8c9616a91.png)
+  
+  - Inclusive o passa como parâmetro no método criado
+  
+  ```
+   package com.devsuperior.dsmovie.services;
+
+import com.devsuperior.dsmovie.dto.MovieDTO;
+import com.devsuperior.dsmovie.entities.Movie;
+import com.devsuperior.dsmovie.repositories.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class MovieService {
+
+    // para ter acesso a base de dados usamos o repository
+    @Autowired // para não precisar instanciar manualmente a framework já faz isso para nós
+    private MovieRepository movieRepository;
+
+    @Transactional(readOnly = true) //para garantir que esse método irá resolver tudo que for da JPA de transação nessa camada de serviço, e o true é para informar que é um método somente de leitura
+    public Page<MovieDTO> findAll(Pageable pageable) {
+        //serviço conversa com repository na forma de entidade
+        //mas ao passar para o controlador passar em DTO
+        //List<Movie> result =  movieRepository.findAll(); retorno é uma lista de MOVIE da entidade
+
+        Page<Movie> result = movieRepository.findAll(pageable);
+
+        //tem que converter para <MovieDTO> essa lista de <Movie> e sem usar o FOR, mas sim o MAP
+        Page<MovieDTO> page = result.map(x -> new MovieDTO(x));
+
+        // retornando a página
+        return page;
+    }
+
+}
+
+  
+  ```
+  
+  
+ # CONTROLADOR
+  - caminho: package com.devsuperior.dsmovie.movieController;
+  
+  - Configurar como sendo um controlador REST (@RestController)
+  - @RequestMapping(value = "/movies") // URL
+  
+  - no controlador se trabalha com DTO
+  - OBS: se usa o Pageable no método para também configurar de que seja uma resposta páginada
+  - MovieController depende do MovieService igual a imagem da ordem das camadas
+  - Por isso instanciamos e usamos o autowired para chamar a service desejada
+  
+   ![image](https://user-images.githubusercontent.com/71105466/158294506-1bfceda3-c885-4426-b95d-003b458e8c01.png)
+  
+  
+
