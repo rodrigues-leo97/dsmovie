@@ -358,14 +358,14 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
   
 # DIVISÃO DAS CAMADAS
   
-## REPOSITORIES
+## REPOSITORIES MOVIE
   com.devsuperior.dsmovie.repositories.MovieRepository
   
   ![image](https://user-images.githubusercontent.com/71105466/157791892-46ef8066-8191-4d52-8c52-beaddb78a1ef.png)
 
   - é uma interface que herda a JpaRepository e dentro das < > vai o tipo da entidade e o tipo do id do movie que seria o long
   
-## DTO 
+## DTO MOVIE
   
   - No DTO ele é bem parecido com a classe referente a ele, por exemplo a Movie e a MovieDTO, a diferença é que a MovieDTO não terá o Jpa (@Entity e etc...)
   - com.devsuperior.dsmovie.dto.MovieDTO
@@ -377,7 +377,7 @@ INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
   ![image](https://user-images.githubusercontent.com/71105466/157793086-df336dfc-c9e8-45db-83b9-b35678c8d6ea.png)
   
   
-## SERVICES
+## SERVICES MOVIE
   
   CAMINHO 
   
@@ -547,6 +547,46 @@ public class MovieController {
   ```
   
   ![image](https://user-images.githubusercontent.com/71105466/158297144-3bc16ac0-495c-4f0c-af6e-b69f48cd5902.png)
+  
+  
+# DTO SCORE
+
+  - caminho: package com.devsuperior.dsmovie.dto;
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158508100-17c9fc0c-bb6e-45a3-bf35-99869b422fab.png)
+
+  
+  - classe que irá passar o email, id do filme e avaliação
+  - se um mesmo usuário entra e faz outra avaliação, eu não crio um novo id para ele no banco e acrescento a nova nota, eu apenas atualizo a informação que já contém dele no banco
+  - Para isso iremos usar o método PUT (pois ele atualiza e também salva de forma idenpotente(salvou mais de uma vez tem o efeito de salvar uma vez só) )
+  - Neste caso PUT ou POST o objeto que eles recebem é passado no corpo da requisição, como mostra a imagem abaixo: 
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158509256-c767b1c0-b077-4ce7-a947-02ccaa4bf60b.png)
+
+  # SERVICE SCORE
+  
+  - Na serviceScore teremos que acrescentar código na classe MOVIE, pois, ainda não temos como acessar os Scores de um determinado filme
+  - Na classe MOVIE deixamos assim: 
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158513384-9bf8a030-d443-4bf5-8a15-d600702258e3.png)
+
+  ![image](https://user-images.githubusercontent.com/71105466/158513403-6b8b8ed3-e958-4ed2-84ef-228fc44f6a08.png)
+
+  - OBS: criamos um método get para isso
+  - isso é necessário para mapear os scores de um filme
+  - SET (não será a lista), pois no muitos para muitos precisamos garantir que não terá dados repetidos no meio, e por isso esse será o tipo da var
+  - Ao instanciar o new é do tipo HashSet<>(), pois o set é uma interface e não podemos instaciar ele, para isso precisamos de uma classe que o implementa
+  
+  
+  
+  
+  # REPOSITORY USER 
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158511741-0402cd36-b71c-4424-96fd-7a54d7689879.png)
+
+  # REPOSITORY SCORE
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158511716-1d85773e-d01d-4817-8212-c3671bbdb7e8.png)
 
 
   
