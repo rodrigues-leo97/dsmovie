@@ -10,11 +10,14 @@ public class ScorePK implements Serializable {
 
     private static final long seriaVersionUID = 1L; //ele pede um n° de versão mas não é obrigatório
 
+    //configurando relação entre o score e o movie
+
+    //muitos scores podem ter um filme
     @ManyToOne
     @JoinColumn(name = "movie_id") //nome da chave estrangeira
     private Movie movie;
 
-    @ManyToOne
+    @ManyToOne //configurando relação entre o user e o score
     @JoinColumn(name = "user_id")
     private User user;
 

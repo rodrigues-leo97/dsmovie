@@ -1,4 +1,4 @@
-package com.devsuperior.dsmovie.movieController;
+package com.devsuperior.dsmovie.controllers;
 
 import com.devsuperior.dsmovie.dto.MovieDTO;
 import com.devsuperior.dsmovie.services.MovieService;
