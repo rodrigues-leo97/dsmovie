@@ -577,6 +577,22 @@ public class MovieController {
   - SET (não será a lista), pois no muitos para muitos precisamos garantir que não terá dados repetidos no meio, e por isso esse será o tipo da var
   - Ao instanciar o new é do tipo HashSet<>(), pois o set é uma interface e não podemos instaciar ele, para isso precisamos de uma classe que o implementa
   
+  ### Configurando os relacionamentos
+  
+  - Para isso na clase ScorePK os relacionamentos ManyToOne são para configurar a relação entre Movie e Score, e entre User e Score
+  - Mas para que isso aconteça corretamente, da mesma forma que o ScorePK tem um relacionamento de ManyToOne, as classes Movie e User precisam ter também
+  - Neste caso elas são o oposto uma da outra
+  - Se na ScorePK é ManyToOne, então lá será OneToMany
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158514248-2b26f9a3-ecb4-48cd-a304-b58cf2d0050b.png)
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158514506-cdffc07f-e40b-4114-b4d6-98d13dfe1123.png)
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158514542-be05f705-87ce-4c55-a408-957c730d1f02.png)
+
+
+
+  
   
   
   
