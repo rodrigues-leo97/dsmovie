@@ -1,8 +1,8 @@
 # Lista FRONTEND
 
-- [x] Criar projeto
-- [x] Instalar Bootstrap
-- [x] Instalar Rotas
+- [ ] Criar projeto
+- [ ] Instalar Bootstrap
+- [ ] Instalar Rotas
 
 # Comandos de instalação
 - yarn create react-app frontend --template typescript //criando projeto
@@ -603,8 +603,46 @@ public class MovieController {
   # REPOSITORY SCORE
   
   ![image](https://user-images.githubusercontent.com/71105466/158511716-1d85773e-d01d-4817-8212-c3671bbdb7e8.png)
-
-
   
   
+  # VALIDAÇÃO NO POSTGRES LOCAL
+  
+    [ ] criar 3 perfis de projeto: test ,dev, prod
+    [ ] gerar script SQL no perfil dev
+    [ ] Testar projeto no banco Postgres local
+  
+   
+  ## PARA QUE SERVE CADA BANCO
+    - perfil dev: funcionará como um perfil de homologação, servirá para testar o projeto no BD postgre na máquina local
+    - perfil prod: será para rodar em hml, quando a aplicação subir para o heroku
+    - test é um banco de dados somente para testes, recriado toda vez que o código é executado, e para isso serve o arquivo import.sql
+  
+ # application-dev.properties
+  - criar um arquivo com esse nome em RESOURCES e colocar a seguinte configuração de código
+  
+  OBS: verificar usuário e senha se estão iguais aos configurados
+  
+  ```
+   #spring.jpa.properties.javax.persistence.schema-generation.create-source=metadata
+   #spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+   #spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=create.sql
+   #spring.jpa.properties.hibernate.hbm2ddl.delimiter=;
 
+   spring.datasource.url=jdbc:postgresql://localhost:5432/dsmovie
+   spring.datasource.username=
+   spring.datasource.password=1234
+
+   spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+   spring.jpa.hibernate.ddl-auto=none
+  
+  ```
+  
+  # application-prod.properties
+  
+   - criar um arquivo com esse nome em RESOURCES e colocar a seguinte configuração de código
+  
+  ```
+   spring.datasource.url=${DATABASE_URL}
+  
+  ```
+   
