@@ -813,4 +813,19 @@ public class MovieController {
   - pois tem a pasta front e back, ai informei que era apenas a pasta back
 
 
-   
+   OBS - Se estiver usando a versão 3.2 no pom.xml talvez tenha que trocar para a versão 3.1 conforme imagem abaixo e subir para o git, após isso tentar fazer o deploy novamente se por acaso deu o erro de versão
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159059562-57317e83-8c01-4151-8401-b3ee62613888.png)
+
+  - Após isso ir no botão OPEN APP
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159059893-01d14652-21b5-4f12-9aea-87fc2aeae7ec.png)
+
+  - A página estará com erro, portanto, pegar o endereço da url
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159059995-01235257-f09c-4c22-9b49-480f5f2ef2a6.png)
+  
+  - Ir no postman e usar a URL do site que pegou no heroku
+
+  ![image](https://user-images.githubusercontent.com/71105466/159060207-f91baf2d-4bf4-4a97-b68f-aaf3443bdda7.png)
+
