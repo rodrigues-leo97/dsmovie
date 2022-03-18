@@ -680,5 +680,17 @@ public class MovieController {
   - Jogar os comandos lá dentro e rodar
   - testar no postgres e postman
 
+  - APÓS ISSO COMENTAR NOVAMENTE AS 4 LINHAS POIS O SCRIPT JA FOI CRIADO
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158938464-7788e06b-b897-4157-ba13-fc33ec89fb90.png)
+
+  # VARIÁVEL DE AMBIENTE
+  
+  - Ir no arquivo application.propertie
+  - ao invés de ficar mundando na mão na primeira linha, criar uma variável de ambiente
+  - por padrão se ela não estiver definida o valor dela será teste, ou seja, se estiver faltando algum valor automaticamente entrará como teste
+  
+ ![image](https://user-images.githubusercontent.com/71105466/158938655-e7b0e943-4a58-4cb5-ac0c-749fd83c8ef0.png)
+
 
    
