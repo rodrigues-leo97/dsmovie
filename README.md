@@ -607,9 +607,9 @@ public class MovieController {
   
   # VALIDAÇÃO NO POSTGRES LOCAL
   
-    [ ] criar 3 perfis de projeto: test ,dev, prod
-    [ ] gerar script SQL no perfil dev
-    [ ] Testar projeto no banco Postgres local
+   1.0 [ ] criar 3 perfis de projeto: test ,dev, prod
+   1.1 [ ] gerar script SQL no perfil dev
+   1.2 [ ] Testar projeto no banco Postgres local
   
    
   ## PARA QUE SERVE CADA BANCO
@@ -629,7 +629,7 @@ public class MovieController {
    #spring.jpa.properties.hibernate.hbm2ddl.delimiter=;
 
    spring.datasource.url=jdbc:postgresql://localhost:5432/dsmovie
-   spring.datasource.username=
+   spring.datasource.username=postgres
    spring.datasource.password=1234
 
    spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
@@ -640,9 +640,45 @@ public class MovieController {
   # application-prod.properties
   
    - criar um arquivo com esse nome em RESOURCES e colocar a seguinte configuração de código
+   - configuração para ele pegar a URL do banco lá no heroku
   
   ```
    spring.datasource.url=${DATABASE_URL}
   
   ```
+  
+  - Após isso criar arquivo chamado SYSTEM.PROPERTIES
+  
+  # SYSTEM.PROPERTIES
+  - criar arquivo na RAÍZ DO PROJETO, conforme imagem abaixo
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158936582-ddc91cae-dbfd-4a64-b915-41de85621fb9.png)
+  
+  - colocar a seguinte configuração
+  
+  ```
+  java.runtime.version=17
+  
+  ```
+  
+  # 1.2 GERANDO SCRIPT SQL NO PERFIL DEV 
+  
+  - descomentar as 4 primeiras linhas caso estejam comentadas
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158936914-342eaad5-4d69-4511-b844-55111e3e9062.png)
+
+  OBS: criar banco de dados com nome "dsmovie" no postgres para o perfil de dev
+  
+  - Ir no application.properties e trocar o perfil de test para dev, como mostra a imagem abaixo:
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158937182-2d655d16-3201-47d4-bbca-d908add2a493.png)
+  
+  - Se rodou com as quatro linhas do banco de DEV descomentada, então, criou um arquivo na pasta backend chamado create.sql
+  - Esse script terá tudo necessário para criar o banco de dados no postgres com as configurações desejadas
+  - pegar os scripts e voltar no pgAdmin
+  - ir no banco dsMovie, botão direito, queryTool
+  - Jogar os comandos lá dentro e rodar
+  - testar no postgres e postman
+
+
    
