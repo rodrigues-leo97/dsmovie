@@ -692,5 +692,125 @@ public class MovieController {
   
  ![image](https://user-images.githubusercontent.com/71105466/158938655-e7b0e943-4a58-4cb5-ac0c-749fd83c8ef0.png)
 
+  # iMPLANTAÇÃO NO HEROKU
+  
+  - Criar o aplicativo no heroku
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939264-3c8d19aa-8e17-4f15-a8e6-f3bfe81fd656.png)
+
+  - Provisionar o banco Postgres
+  - Ir na aba RESOURCES dentro do heroku
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939342-e59c5a05-705d-476d-9191-2ee2a4c84824.png)
+
+  - Em Add-ons procurar por HEROKU POSTGRES
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939398-1a669deb-79b3-43bf-8754-9c30f94e0aff.png)
+  
+  - escolher o plano gratuito
+
+  ![image](https://user-images.githubusercontent.com/71105466/158939424-f0bd0ac9-c5da-4d73-97aa-f116ec97b89e.png)
+  
+  - HEROKU ADD AO PROJETO
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939490-041eb454-a916-4e17-b4f7-fddc53b43968.png)
+
+  
+  - DEFINIR A VAR DE AMBIENTE APP_PROFILE=PROD
+  - rodar no banco de produção
+  - ela será baseada na variável de ambiente criada em application-prod.propertie {DATABASE_URL} que já tem no heroku
+  - PARA ISSO BASTA IR NA ABA SETTINGS
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939752-ce2c1855-b2de-4125-9ce9-84ba95e521b9.png)
+
+  - depois ir em Config Vars
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158939779-ebe135a1-2221-42f1-8471-801a80372f62.png)
+
+  - acrescentar uma nova variável de ambiente {APP_PROFILE}
+  - colocar que ela aponta para prod
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158940017-fd27c69c-6b69-41e8-8e29-cc1e241731fa.png)
+
+
+  # CONECTANDO AO BANCO VIA PGADMIN
+  
+  - conectando ao banco remoto
+  - primeiro pegar variavel de ambiente marcada na imagem abaixo
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158940097-b8587463-c61c-430e-8bfb-0890211113d3.png)
+  
+  - Separar os dados da var de ambiente, conforme print abaixo
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158940397-ddefcf23-10e2-4862-8e7f-c9ff26e28bdd.png)
+
+  - depois do // vem o nome do usuário
+  - depois dos : vem a senha do usuário
+  - depois do @ vem o host (onde está hospedado o banco de dados
+  - depois dos : vem a porta
+  - depois da / vem  o nome da base de dados
+  
+  - Estrutura da URL de banco de dados la do postgres do heroku
+  - usar isso no pgAdmin para conectar no postgres do heroku
+  
+  - ir no pgAdmin e criar um new SERVER 
+  - colocar nas configurações as informações do código abaixo da imagem
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158940912-708026f4-dc2e-4dec-aaea-21f6ae331905.png)
+  
+  - Depois ir em ADVANCED e repetir o nome da base de dados
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158941025-acf4161b-d297-4e8c-bc42-f064c968e853.png)
+
+  - Caso esteja conectado ficará assim: 
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158941127-c2f69772-4359-4ccc-8ae1-0db66c282a12.png)
+
+  
+  ```
+  postgres://
+
+  uqraulrerxtrls //USUÁRIO
+  :
+  23cdfe523bccf7a709e33a52157ffb1603f19647c48585cbbb3307b098de6446 //SENHA
+  @
+  ec2-3-222-204-187.compute-1.amazonaws.com //HOST
+  :
+  5432
+  /
+  dbv47ubjp8hloe //NOME DA BASE
+  
+  ```
+
+  - Ainda não tem nenhuma tabela no banco online, então devemos pegar aquele SCRIPT na pasta do backend chamado create.sql
+  - ir na base do heroku no pgAdmin, ir em tables e anexar e rodar o código
+  - Após isso banco de HEROKU já estará populado e com tabelas criadas
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158941391-7e93f507-b843-4052-a6a5-fbc8d1cea890.png)
+
+  # ENVIAR PROJETO PARA O HEROKU
+  
+  ```
+  heroku -v
+  heroku login
+  heroku git:remote -a <nome-do-app> //para associar o meu rep local ao heroku
+  git remote -v
+  git subtree push --prefix backend heroku main
+  
+  ```
+  - para colocar nome na aplicação só olhar no heroku e colocar igual
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158942107-91e1831e-21e8-4bac-b51b-ce02dfac9a20.png)
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158942125-60a79c66-0368-4602-b3f2-f38a4652d8d2.png)
+  
+  - PARA VER NO QUE MEU PROJETO ESTÁ ASSOCIADO, no caso heroku e github
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158942218-06a88cf6-9eb6-4cbd-b085-f7e55350bfda.png)
+  
+  ![image](https://user-images.githubusercontent.com/71105466/158942375-0fd8f798-7f43-4efb-90a8-affd42dfb68a.png)
+
+  - pois tem a pasta front e back, ai informei que era apenas a pasta back
+
 
    
