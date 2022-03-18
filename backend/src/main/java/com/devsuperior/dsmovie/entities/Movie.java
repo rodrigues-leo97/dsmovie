@@ -20,6 +20,7 @@ public class Movie {
     //um filme pode ter várias avaliações
     @OneToMany(mappedBy = "id.movie") //id é o nome da chave do score e dentro do ScorePK o nome do atributo é movie
     private Set<Score> scores = new HashSet<>(); //set é interface, por isso instancia o hashset(classe que implementa a interface)
+    //set serve para garantir que não há dados repetidos no meio
     //após isso posso acessar todas as avaliações de um filme
 
     // Constructors
