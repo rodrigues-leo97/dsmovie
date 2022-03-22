@@ -32,7 +32,9 @@ function Form() {
                     </select>
                 </div>
                 <div className="dsmovie-form-btn-container">
+                <Link to="/">
                     <button type="submit" className="btn btn-primary dsmovie-btn">Salvar</button>
+                </Link>
                 </div>
             </form >
             <Link to="/">
