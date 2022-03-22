@@ -828,4 +828,10 @@ public class MovieController {
   - Ir no postman e usar a URL do site que pegou no heroku
 
   ![image](https://user-images.githubusercontent.com/71105466/159060207-f91baf2d-4bf4-4a97-b68f-aaf3443bdda7.png)
+  
+  
+  # IMPLANTANDO NO NETLIFY
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159387539-03f5271f-5d68-4e30-9ab0-b20ee04a1ab2.png)
+
 
