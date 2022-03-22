@@ -1,5 +1,4 @@
 import MovieCard from "components/MovieCard";
-import MovieScore from "components/MovieScore";
 import Pagination from "components/Pagination";
 
 function Listing() {
@@ -41,4 +40,4 @@ function Listing() {
     );
 }
 
-export default Listing; {/* Componente exportado */}
+export default Listing;

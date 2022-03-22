@@ -43,5 +43,5 @@ function Form() {
   )
 }
 
-export default Form; {/* Componente exportado */}
+export default Form;
 
