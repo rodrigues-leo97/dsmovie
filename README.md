@@ -833,5 +833,34 @@ public class MovieController {
   # IMPLANTANDO NO NETLIFY
   
   ![image](https://user-images.githubusercontent.com/71105466/159387539-03f5271f-5d68-4e30-9ab0-b20ee04a1ab2.png)
+  
+  
+  # INTEGRANDO FRONT E BACK
+  
+  [ ] instalar o AXIO
+  
+  - Biblioteca usada para facilitar o processo de requisições
+  
+  ```
+  yarn add axios@0.24.0
+  
+  ```
+  
+  - Definir BASE_URL (var de ambiente), apontar o código para URL básica do nosso backend
+  - src/utils/requests.ts
+  - criar var BASE_URL, mas tem que colocar algumas configurações, pois as vezes estará apontando para o sue ambiente local e outras vezes para o heroku
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159391886-1757b312-7e9c-48f9-bd06-17ca924b7fe7.png)
+
+  - process.env.REACT_APP_BACKEND_URL => definir variavel de ambiente para receber o endereço do heroku mais tarde
+  - process.env é uma propriedade que ja tem no projeto
+  - REACT_APP (padrão, não pode mudar por causa do netlify)
+  - BACKEND_URL (nome de escolha própria)
+  - ?? operador nulo, igual ao feito no backend, se não tiver nada para indicar o apontamente então irá automaticamente apontar para o localhost
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159392088-6e22dfeb-eac8-4c0a-9f3f-37691b01e2c0.png)
+
+  
+  
 
 
