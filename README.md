@@ -837,7 +837,7 @@ public class MovieController {
   
   # INTEGRANDO FRONT E BACK
   
-  [ ] instalar o AXIO
+  - 1.0 [ ] instalar o AXIO
   
   - Biblioteca usada para facilitar o processo de requisições
   
@@ -859,6 +859,9 @@ public class MovieController {
   - ?? operador nulo, igual ao feito no backend, se não tiver nada para indicar o apontamente então irá automaticamente apontar para o localhost
   
   ![image](https://user-images.githubusercontent.com/71105466/159392088-6e22dfeb-eac8-4c0a-9f3f-37691b01e2c0.png)
+  
+  
+  - 1.1 [ ] Definir os tipos Movie e MoviePage
 
   
   
