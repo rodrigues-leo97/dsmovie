@@ -913,4 +913,9 @@ public class MovieController {
   - ou seja, quando o código subir para o web ele irá identificar a variável de ambiente e ver se ele irá rodar com localhost ou com a variável setada para rodar no lugar correto
   - neste caso ele irá fazer a mesma verificação que o backend para ver qual base irá usar para exibir os dados, PROD, DSV ou TEST, e o front se encarregará também de fazer a requisição para essa rota
 
+  # Passo: React hooks: useState e useEffect
+  
+  - Hooks são funções cujo comportamento está vinculado ao estado e ao ciclo de vida do React a partir de componentes funcionais.
+
+  https://pt-br.reactjs.org/docs/hooks-overview.html
 
