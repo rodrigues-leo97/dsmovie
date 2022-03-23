@@ -862,8 +862,55 @@ public class MovieController {
   
   
   - 1.1 [ ] Definir os tipos Movie e MoviePage
+  
+  - Foi tirado os tipos do próprio retorno da API, como ex na imagem abaixo
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159603823-c5678f36-44a6-4caa-b70d-e9b094bba14c.png)
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159603958-2ac51909-9210-4546-8c27-452c4211ea25.png)
+  
+  - O frontend tem que ter os tipos de dados que a API retorna
+  
+  - Ir no projeto do frontend e criar
+   
+   src/types/movie.ts //OBS - criar como arquivo padrão do TS e não em React
+  
+  ```
+    export type Movie = {
+      id: number;
+      title: string;
+      score: number;
+      count: number;
+      image: string;
+  }
 
+  export type MoviePage = {
+      content: Movie[];
+      last: boolean;
+      totalPages: number;
+      totalElements: number;
+      size: number;
+      number: number;
+      first: boolean;
+      numberOfElements: number;
+      empty: boolean;
+  }
   
+  ```
   
+  - 1.2 [ ] FAZER A REQUISIÇÃO
+  - Conferir se o Axio foi instalado
+  
+  - Existe a primeira forma, mas não é uma boa prática, e trás resultados repetidos no console
+  
+  ![image](https://user-images.githubusercontent.com/71105466/159605823-83e5d204-4e92-4d8b-8e2b-4a30319040b6.png)
+
+  - chamar o axios com a requisição desejada, neste caso o GET
+  - o THEN serve para quando é algo assíncrono, ou seja, todo o resto continua executando enquanto ele tem ou não o seu retorno
+  - Neste caso está aguardando o retorno da rota desejada ao fazer a requisição get, e caso tenha o retorno segue as instruções a seguir
+  - Exibir no console o response.data
+  - Vale lembrar de que já está sendo usada a variável de ambiente local para fazer a requisição, só alterando a rota final para a desejada
+  - ou seja, quando o código subir para o web ele irá identificar a variável de ambiente e ver se ele irá rodar com localhost ou com a variável setada para rodar no lugar correto
+  - neste caso ele irá fazer a mesma verificação que o backend para ver qual base irá usar para exibir os dados, PROD, DSV ou TEST, e o front se encarregará também de fazer a requisição para essa rota
 
 
