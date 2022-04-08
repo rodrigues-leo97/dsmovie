@@ -8,7 +8,7 @@ import { BASE_URL } from "utils/requests";
 function Listing() {
 
     //useState
-    const [pageNumber, setPageNumber] = useState(0); //boa prática inicar ele com valor, o valor inicial pageNumber será o zero por conta da página zero
+    const [pageNumber] = useState(0); //boa prática inicar ele com valor, o valor inicial pageNumber será o zero por conta da página zero
     
     const[page, setPage] = useState<MoviePage>({
         content: [],
