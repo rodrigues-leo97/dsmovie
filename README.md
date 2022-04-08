@@ -940,7 +940,84 @@ public class MovieController {
      ![image](https://user-images.githubusercontent.com/71105466/162345517-f39c305b-75e5-4bb7-8f9d-8f191f1bc84c.png)
   
   # FALANDO SOBRE PROPS
-
   
+   - podem ser entendidas como argumentos
+   - ex no componente /src/components/MovieCard/index.tsx
+   - criando um tipo Props e passando que ele terá um objeto do tipo Movie
+   - Excluindo os dados mocados que havia nele:
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162346253-31ae2d81-40d0-4c9c-b949-fb89fec3b15a.png)
+
+   - passa a dar erro na classe que chama o componente que foi removido os dados mocados, pois está esperando a Prop como argumento
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162346391-209b6992-ff7c-4606-b3d6-1e049e777f98.png)
+  
+   - aproveitar essa mudança para pegar e exibir os filmes que vieram na consulta
+   - no postman o retorno da consulta vem com um CONTENT, que trás uma lista de filmes
+  
+   ![image](https://user-images.githubusercontent.com/71105466/162346728-8fdc4cc9-17e6-4c4a-9446-d94a196917ca.png)
+
+   - iremos usar esse CONTENT para trazer uma listagem dinamica no front, renderizando os cards desse filme com esse obj:
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162350136-a1af2400-6801-4fdd-8261-c27618d6ed56.png)
+
+   - já altera o page para receber de forma dinamica o pageNumber, que ao iniciar é com zero, ou seja, buscando a page zero
+   - quando chegar a resposta eu pego o corpo da resposta, mas antes criar um outro estado para guardar no componente a página que foi CARREGADA
+   
+   ![image](https://user-images.githubusercontent.com/71105466/162350333-f964e0dd-44fd-4238-ad8c-f1d5095a15cb.png)
+
+   - setando ele como useState também
+   - para ficar mais rápido e fácil pegar os tipos de outra classe e setar as inforamações iniciais
+   
+    ```
+        content: [], //lista vazia
+        last: true, //por enquanto estou na última página, por isso true
+        totalPages: 0, 
+        totalElements: 0,
+        size: 12, //página de 12 elementos
+        number: 0, //estou na página zero por enquanto
+        first: true, //é a primeira página?
+        numberOfElements: 0, 
+        empty: true 
+  
+    ```
+  
+   - definido então um obj padrão para iniciar a paginação
+   - temos um estado que GUARDA a página que busquei na requisição
+  
+   - QUANDO VIER A RESPOSTA oq fazer: 
+  
+     ![image](https://user-images.githubusercontent.com/71105466/162350733-e670e242-1785-4a54-976f-58610435401b.png)
+
+  - na linha 29, eu uso o setPage para que quando vier a resposta eu salvo a página que voltou na minha requisição
+  - eu parametrizo na linha  13 com generics o useState para o tipo MoviePage, pois acusa erro se não fizer isso
+  
+   ![image](https://user-images.githubusercontent.com/71105466/162350889-bca47df4-95e1-47aa-81bc-10ff73f15fca.png)
+  
+  - para finalizar eu uso o pageNumber como segundo parametro no useEffect, e quando eu mudar de página automaticamente eu mudo o pageNumber e por comportamento padrão a requisição é chamada novamente
+  
+   ## DEIXANDO DE FORMA DINÂMICA
+    
+    ![image](https://user-images.githubusercontent.com/71105466/162351030-25564e9e-6ea0-4909-a521-92b7352823e9.png)
+  
+  - chamo o obj PAGE.CONTENT para acessar a lista de filmes
+  
+   ![image](https://user-images.githubusercontent.com/71105466/162351094-ef6a3a79-6580-47b5-9fc4-3544b4500cd1.png)
+
+  - e chamo a função MAP, para mapear os itens da coleção, é como se fosse um FOR, porém, mais simplificado
+  - o retorno de cada content eu coloco dentro de um container que são as DIVS dentro do retorno do meu map
+  
+  IMPORTANTE:
+   - Numa renderização dinâmica de coleção, cada elemento renderizado DEVE possuir o atributo KEY, pois o react exige isso
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162351363-b6a91eae-dc35-4550-acbd-3ad35ca993ab.png)
+  
+   - para que cada um seja identificado corretamente
+  
+  OBS: 
+  
+   ![image](https://user-images.githubusercontent.com/71105466/162351231-09b56cef-4f89-42bd-9f40-0094c1c2c85c.png)
+  
+   - deixando a busca das páginas de forma dinâmica, e ordenadas por id, ou se quiser por title
 
 
