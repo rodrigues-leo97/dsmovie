@@ -918,4 +918,29 @@ public class MovieController {
   - Hooks são funções cujo comportamento está vinculado ao estado e ao ciclo de vida do React a partir de componentes funcionais.
 
   https://pt-br.reactjs.org/docs/hooks-overview.html
+  
+  - Ex: useState
+  
+  ![image](https://user-images.githubusercontent.com/71105466/162344481-d7fd2a41-9aed-49e0-ab86-0e75dd2314bd.png)
+  
+  - O NUMBER é um dos atributos que a API retorna, e eu acesso ele para setar a página procurada
+
+  ![image](https://user-images.githubusercontent.com/71105466/162344492-fd8bb876-4a4c-40cd-a78f-34b77ca9ac94.png)
+  
+  
+  - Ex: useEffect
+   * recebe 2 argumentos, uma função para executar e o segundos é uma lista de objetos que irá observar
+   * Sempre que alterar algo no objeto ele irá executar essa função (primeiro argumento) novamente
+   * Para isso eu coloco minha requisição AXIOS com o get dentro dela
+   * a partir de agora eu tenho uma função que é chamada somente ao carregar o componente
+   * por conta disso não temos mais o problema de executar duas vezes a função e ter dois resultados iguais no console para o retorno da API
+   * isso se dá pois estou colocando dentro de um hook e que ele tá amarrando a execução dentro do ciclo de vida do componente
+   * ficando dessa forma:
+ 
+     ![image](https://user-images.githubusercontent.com/71105466/162345517-f39c305b-75e5-4bb7-8f9d-8f191f1bc84c.png)
+  
+  # FALANDO SOBRE PROPS
+
+  
+
 
