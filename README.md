@@ -1010,7 +1010,10 @@ public class MovieController {
   IMPORTANTE:
    - Numa renderização dinâmica de coleção, cada elemento renderizado DEVE possuir o atributo KEY, pois o react exige isso
   
-    ![image](https://user-images.githubusercontent.com/71105466/162351363-b6a91eae-dc35-4550-acbd-3ad35ca993ab.png)
+
+  
+ ![image](https://user-images.githubusercontent.com/71105466/162351762-311eb7b7-571b-4960-847b-ebe2dd53e9bc.png)
+
   
    - para que cada um seja identificado corretamente
   
