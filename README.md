@@ -946,11 +946,14 @@ public class MovieController {
    - criando um tipo Props e passando que ele terá um objeto do tipo Movie
    - Excluindo os dados mocados que havia nele:
   
-    ![image](https://user-images.githubusercontent.com/71105466/162346253-31ae2d81-40d0-4c9c-b949-fb89fec3b15a.png)
+    
+ ![image](https://user-images.githubusercontent.com/71105466/162346253-31ae2d81-40d0-4c9c-b949-fb89fec3b15a.png)
 
    - passa a dar erro na classe que chama o componente que foi removido os dados mocados, pois está esperando a Prop como argumento
   
-    ![image](https://user-images.githubusercontent.com/71105466/162346391-209b6992-ff7c-4606-b3d6-1e049e777f98.png)
+    
+  
+ ![image](https://user-images.githubusercontent.com/71105466/162346391-209b6992-ff7c-4606-b3d6-1e049e777f98.png)
   
    - aproveitar essa mudança para pegar e exibir os filmes que vieram na consulta
    - no postman o retorno da consulta vem com um CONTENT, que trás uma lista de filmes
@@ -959,7 +962,8 @@ public class MovieController {
 
    - iremos usar esse CONTENT para trazer uma listagem dinamica no front, renderizando os cards desse filme com esse obj:
   
-    ![image](https://user-images.githubusercontent.com/71105466/162350136-a1af2400-6801-4fdd-8261-c27618d6ed56.png)
+   
+  ![image](https://user-images.githubusercontent.com/71105466/162350136-a1af2400-6801-4fdd-8261-c27618d6ed56.png)
 
    - já altera o page para receber de forma dinamica o pageNumber, que ao iniciar é com zero, ou seja, buscando a page zero
    - quando chegar a resposta eu pego o corpo da resposta, mas antes criar um outro estado para guardar no componente a página que foi CARREGADA
@@ -998,7 +1002,8 @@ public class MovieController {
   
    ## DEIXANDO DE FORMA DINÂMICA
     
-    ![image](https://user-images.githubusercontent.com/71105466/162351030-25564e9e-6ea0-4909-a521-92b7352823e9.png)
+  
+ ![image](https://user-images.githubusercontent.com/71105466/162351030-25564e9e-6ea0-4909-a521-92b7352823e9.png)
   
   - chamo o obj PAGE.CONTENT para acessar a lista de filmes
   
