@@ -1,16 +1,15 @@
 import MovieScore from "components/MovieScore";
 import { Link } from "react-router-dom";
+import { Movie } from "types/movie";
 
+type Props = {
+    //criando um tipo interno sem exportar, e dizer que pode ter vários dados
 
-function MovieCard() {
+    movie: Movie; //neste caso é só um objeto do tipo Movie
+    //sendo então o tipo de dado que minha função irá receber
+}
 
-    const movie = {
-        id: 1,
-        image: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg",
-        title: "The Witcher",
-        count: 2,
-        score: 4.5
-    };
+function MovieCard( { movie }: Props ) { //passo um obj movie do tipo Props(tipo criado acima)
 
     return (
         <div>
