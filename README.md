@@ -1055,4 +1055,53 @@ public class MovieController {
 
 
 
+# MOSTRANDO TODAS AS ESTRELAS DAS AVALIAÇÕES DE FORMA DINÂMICA
 
+  ```
+  //algoritmo para lógica das estrelas sendo preenchidas ou não
+  function getFills(score: number) { //função para saber quantas estrelas serão preenchidas pela nota
+
+    const fills = [0, 0, 0, 0, 0];
+    const integerPart = Math.floor(score); //retorna o menor número inteiro dentre o número
+
+    for(let i = 0; i < integerPart; i++) {
+        fills[i] = 1;
+    }
+
+    const diff = score - integerPart;
+    if(diff > 0) {
+        fills[integerPart] = 0.5;
+    }
+    return fills;
+
+}
+
+//criando componente dentro do meu arquivo
+function Star({ fill } : StarProps) {
+    if(fill === 0) {
+        return <StarEmpty />
+    } else if (fill === 1) {
+        return <StarFull />
+    } else {
+        return <StarHalf />
+    }
+}
+  
+  ```
+  
+  - Colocar dentro do componente MovieStars
+  - Criar um outro "componente" dentro do mesmo, que seria a função Star acima
+  - alterar o retorno da função MovieStar
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162868334-f4ccd613-14bd-481e-ae3c-5ef69de020f5.png)
+
+    ![image](https://user-images.githubusercontent.com/71105466/162868374-a49d46bc-1378-4f79-8644-461245ea903d.png)
+
+  - Como o componente MovieStars agora passa a receber uma Props, a chamada dele em outros componentes terá que ser alterada
+  - No componente MovieScore
+  
+    ![image](https://user-images.githubusercontent.com/71105466/162868467-57426997-7cc9-441b-ac3c-74db7d64549f.png)
+  
+  - e no componente MovieCard, que também chama o MovieStar
+
+    ![image](https://user-images.githubusercontent.com/71105466/162868548-51078f07-26e8-416c-8eb7-fd9ac20c4065.png)
