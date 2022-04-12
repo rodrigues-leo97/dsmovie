@@ -1027,5 +1027,32 @@ public class MovieController {
    ![image](https://user-images.githubusercontent.com/71105466/162351231-09b56cef-4f89-42bd-9f40-0094c1c2c85c.png)
   
    - deixando a busca das páginas de forma dinâmica, e ordenadas por id, ou se quiser por title
+  
+  # PROPS: PEGANDO ARGUMENTO DA ROTA DOS FORMULÁRIOS
+  
+   - Acessar o componente dos formulários /src/pages/Form
+   - Passar a props como na imagem abaixo: 
+  
+     ![image](https://user-images.githubusercontent.com/71105466/162857072-051f93f9-7351-47a1-8680-629543795fad.png)
+  
+   - Para facilitar o uso iremos fazer uma troca e criar um novo componente
+   - src/FormCard/index.tsx e styles.css
+   - esse componente será responsável por ter todo conteúdo que antes tinha no componente src/pages/Form/index.tsx
+   - apenas copiar e colar e acrescentar a Props
+  
+     ![image](https://user-images.githubusercontent.com/71105466/162859355-ce8e6b62-84c4-4c0e-9b54-c7c4cb5bbcec.png)
+
+  OBS: o ? nas requisições é pq o terminal acusa um erro informando que pode não haver o movie.image e etc, a interrogação serve para "mostrar" que estou ciente disso e para seguir caso não tenha
+  
+   - Crio um type Props, passo apenas o movieId, pois só preciso do id que está na url e digo que é do tipo Number
+   - na função chamo ela informando um movieId do tipo Props e chamo o axio no método para fazer a requisição
+   - Passo na função useEffect um segundo argumento após a requisição que é o [movieId], que é responsável por monitorar a função e garantir que ela será executada somente quando necessária.
+  
+   - o Form ficou responsável apenas por chamar o componente FormCard e fazer uso da Props que foi utilizada no componente FormCard
+  
+  
+     ![image](https://user-images.githubusercontent.com/71105466/162859674-20a9e8d9-6313-42e7-9037-8cf175715aac.png)
+
+
 
 
