@@ -35,9 +35,14 @@ function Listing() {
     //estou dizendo que a minha função depende do pageNumber, ou seja, quando mudar a página ele carrega a função novamente
     //a página ao carregar irá se iniciar com zero
 
+    const handlePageChange = (newPageNumber : number) => { //expressão lambda
+        //sempre que chamar essa função com novo número de páginas, ele vai no useState e atualiza o valor dele
+        setPageNumber(newPageNumber);
+    }
+
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange}/>
             
             <div className="container">
                 <div className="row">
