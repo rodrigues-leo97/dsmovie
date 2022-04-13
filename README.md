@@ -1105,3 +1105,41 @@ function Star({ fill } : StarProps) {
   - e no componente MovieCard, que também chama o MovieStar
 
     ![image](https://user-images.githubusercontent.com/71105466/162868548-51078f07-26e8-416c-8eb7-fd9ac20c4065.png)
+  
+  
+  # DEIXANDO DINÂMICO E NÚMERO DA PÁGINA E AS SETAS DE INDICAÇÃO
+  
+   - Primeiro passo é passar a usar uma props no componente de Pagination
+   - A props ela irá conter uma variável page do tipo MoviePage
+   - com essa props iremos usar para fazer as regras de exibição da página
+   - Só uma observação que a página começa na página zero, então, será necessária um +1 para que comece no 1 a page
+  
+     ![image](https://user-images.githubusercontent.com/71105466/163077541-af786059-434e-4f44-baea-b481a1b22d5f.png)
+  
+   - A classe irá ficar como na imagem acima
+   - Posterior a isso nas classes em que ela é chamada precisará acrescentar a Props, como no exemplo a seguir
+  
+    
+     ![image](https://user-images.githubusercontent.com/71105466/163077616-473109fe-7ee4-4234-9bc4-05270f80dc0f.png)
+
+   - O tipo page já tem na constante da mesma classe
+  
+    ![image](https://user-images.githubusercontent.com/71105466/163077661-5a014329-babf-4f44-9624-7d9d4058df4e.png)
+
+  # EVENTO DE @CLICK PARA A TROCA DE PÁGINA
+  
+   - Ir no Pagination e passar mais um valor de Props
+   - Um evento chamado onChange que é uma função
+   - O resultado ficará assim 
+  
+    ![image](https://user-images.githubusercontent.com/71105466/163079899-cfe806ec-194b-494b-8019-f75014262d9f.png)
+  
+   - Após isso ir no Listing e passar o novo valor de Props
+   - Porém antes criar uma função para alterar o setPageNumber que não foi usado até agora, ficando assim o resultado final 
+  
+    ![image](https://user-images.githubusercontent.com/71105466/163080096-cce593c0-670f-424d-bd7f-a938d54798a3.png)
+  
+   - A função handlePageChange irá receber o valor da página atualizada, e irá setar o novo valor, com isso automaticamente na função useEffect o observador que é o pageNumber quando trocar irá fazer a requisição novamente 
+   - Isso irá atualizar os dados da tela e a página
+
+
