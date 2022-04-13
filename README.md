@@ -1144,5 +1144,7 @@ function Star({ fill } : StarProps) {
   
    - A função handlePageChange irá receber o valor da página atualizada, e irá setar o novo valor, com isso automaticamente na função useEffect o observador que é o pageNumber quando trocar irá fazer a requisição novamente 
    - Isso irá atualizar os dados da tela e a página
+  
+  # INTEGRANDO COM BACKEND, SALVANDO OS SCORES
 
 
